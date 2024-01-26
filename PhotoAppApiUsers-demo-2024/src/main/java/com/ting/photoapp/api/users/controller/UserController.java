@@ -10,7 +10,15 @@ public class UserController {
 
     @GetMapping
     public String getStatus(){
-        return "The status is working and the Users Controller is wokring.";
+        return "This is the /users in USERS-WS.";
     }
+
+    @GetMapping("/userinusers")
+    public String getUserinUsers(){
+        return "this is the userinusers.";
+    }
+
+
+
 
 }

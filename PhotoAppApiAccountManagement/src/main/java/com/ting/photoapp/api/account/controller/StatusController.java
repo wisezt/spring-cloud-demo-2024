@@ -5,17 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/account")
-public class AccountController {
+@RequestMapping("/users")
+public class StatusController {
 
-    @GetMapping("/status/check")
+    @GetMapping
     public String getStatus(){
-        return "Working...";
+        return "This is /users in ACCOUNT-WS";
     }
-
-    @GetMapping()
-    public String getAccounts(){
-        return "This is getAccounts";
-    }
-
 }
