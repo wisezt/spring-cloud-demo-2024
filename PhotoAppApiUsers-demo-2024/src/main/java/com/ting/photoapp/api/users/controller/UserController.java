@@ -1,6 +1,7 @@
 package com.ting.photoapp.api.users.controller;
 
 import com.ting.photoapp.api.users.model.CreateUserRequestModel;
+import com.ting.photoapp.api.users.model.CreateUserResponseModel;
 import com.ting.photoapp.api.users.serivce.UserService;
 import com.ting.photoapp.api.users.shared.UserDto;
 import jakarta.servlet.http.HttpServletRequest;
@@ -8,6 +9,9 @@ import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,14 +28,18 @@ public class UserController {
     }
 
     @PostMapping
-    public String createUser(@Valid @RequestBody CreateUserRequestModel userDetails){
+    public ResponseEntity<CreateUserResponseModel> createUser(@Valid @RequestBody CreateUserRequestModel userDetails){
 
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         UserDto userDto = modelMapper.map(userDetails, UserDto.class);
+
+        // Save user into H2 DB
         userService.createUser(userDto);
 
-        return "new user is created";
+        CreateUserResponseModel createUserResponseModel = modelMapper.map(userDto, CreateUserResponseModel.class);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(createUserResponseModel);
     }
 
 

@@ -19,7 +19,7 @@ public class UserEntity {
 
     @Id
     @GeneratedValue
-    private String Id;
+    private Integer Id;
 
     @Column(nullable = true, length = 255, unique = true)
     private String userId;
@@ -64,11 +64,11 @@ public class UserEntity {
         this.userId = userId;
     }
 
-    public String getId() {
+    public Integer getId() {
         return Id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         Id = id;
     }
 
