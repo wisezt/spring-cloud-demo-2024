@@ -29,6 +29,13 @@ public class UserController {
         return "This is the /users in USERS-WS.IP: " + request.getRemoteAddr() + " PORT: " + request.getServerPort();
     }
 
+    @PostMapping("/login")
+    public String login(HttpServletRequest request) {
+
+        return "login succeeded";
+    }
+
+
     @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<CreateUserResponseModel> createUser(@Valid @RequestBody CreateUserRequestModel userDetails, HttpServletRequest request) {
 

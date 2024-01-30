@@ -12,7 +12,7 @@ public class UserEntity {
     private String firstName;
     @Column(nullable = false, length = 255)
     private String lastName;
-    @Column(nullable = true, length = 255, unique = true)
+    @Column(nullable = true, length = 255, unique = false)
     private String email;
     @Column(nullable = false, length = 255)
     private String encryptedPassword;
