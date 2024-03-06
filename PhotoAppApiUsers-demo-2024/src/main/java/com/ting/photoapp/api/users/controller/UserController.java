@@ -25,6 +25,7 @@ public class UserController {
 
     @GetMapping
     public String getStatus(HttpServletRequest request) {
+        System.out.println("This is the /users in USERS-WS.IP: " + request.getRemoteAddr() + " PORT: " + request.getServerPort());
 
         return "This is the /users in USERS-WS.IP: " + request.getRemoteAddr() + " PORT: " + request.getServerPort();
     }
@@ -33,6 +34,12 @@ public class UserController {
     public String login(HttpServletRequest request) {
 
         return "login succeeded";
+    }
+
+    @PostMapping("/test")
+    public String test(HttpServletRequest request) {
+
+        return "test succeeded";
     }
 
 

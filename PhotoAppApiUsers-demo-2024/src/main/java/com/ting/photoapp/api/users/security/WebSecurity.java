@@ -41,17 +41,21 @@ public class WebSecurity {
 
         AuthenticationManager authenticationManager = authenticationManagerBuilder.build();
 
+        AuthenticationFilter authenticationFilter = new AuthenticationFilter(authenticationManager, userService, environment);
+        authenticationFilter.setFilterProcessesUrl("/test/login");
+
+
         http
                 .csrf(csrf -> csrf.disable()) // Disable CSRF protection
-                .addFilterBefore(ipAddressFilter(), UsernamePasswordAuthenticationFilter.class)
+//                .addFilterBefore(ipAddressFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
-//                                .requestMatchers(HttpMethod.GET, "/users").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/users").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/users").permitAll()
                                 .requestMatchers("/h2-console/**").permitAll()
                                 .anyRequest().authenticated()
                 )
-                .addFilter(new AuthenticationFilter(authenticationManager, userService, environment))
+                .addFilter(authenticationFilter)
                 .authenticationManager(authenticationManager)
                 .sessionManagement(sessionManagement ->
                         sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)

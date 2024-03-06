@@ -40,6 +40,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private Environment environment;
 
 
+
 //    @Autowired
     @Autowired
     public AuthenticationFilter(AuthenticationManager authenticationManager, UserService userService, Environment environment) {

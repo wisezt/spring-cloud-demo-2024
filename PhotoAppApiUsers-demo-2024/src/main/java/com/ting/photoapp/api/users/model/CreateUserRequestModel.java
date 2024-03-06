@@ -14,7 +14,7 @@ public class CreateUserRequestModel {
     @Size(min=2, message ="Last name must not be less than two characters")
     private String lastName;
     @NotNull
-    @Size(min=8, message ="Password e must not be less than two characters")
+    @Size(min=8, message ="Password must not be less than two characters")
     private String password;
     @NotNull
     @Email(message="Please provide valid email address")
