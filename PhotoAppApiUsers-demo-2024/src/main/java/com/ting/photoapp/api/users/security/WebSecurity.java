@@ -35,14 +35,16 @@ public class WebSecurity {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+        // Build authenticationManager
         AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
-
         authenticationManagerBuilder.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
-
         AuthenticationManager authenticationManager = authenticationManagerBuilder.build();
 
+
+        // Build authenticationFilter
         AuthenticationFilter authenticationFilter = new AuthenticationFilter(authenticationManager, userService, environment);
-        authenticationFilter.setFilterProcessesUrl("/test/login");
+        authenticationFilter.setFilterProcessesUrl("/login");
 
 
         http

@@ -53,12 +53,9 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res)
             throws AuthenticationException {
         try {
-
             LoginRequestModel creds = new ObjectMapper().readValue(req.getInputStream(), LoginRequestModel.class);
-
             return getAuthenticationManager().authenticate(
                     new UsernamePasswordAuthenticationToken(creds.getEmail(), creds.getPassword(), new ArrayList<>()));
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -69,6 +66,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                                             HttpServletResponse res, FilterChain chain,
                                             Authentication auth) throws IOException, ServletException {
         String userName = ((User)auth.getPrincipal()).getUsername();
+        System.out.println("successfulAuthentication userName: " + userName);
         UserDto userDetails = userService.getUserDetailsByEmail(userName);
         String tokenSecret = environment.getProperty("token.secret");
         byte[] secretKeyBytes = Base64.getEncoder().encode(tokenSecret.getBytes());
@@ -86,10 +84,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         System.out.println("userId: " + userName);
         System.out.println("token: " + token);
 
-
         res.addHeader("userId", userDetails.getUserId());
         res.addHeader("token", token);
-
-
     }
 }
