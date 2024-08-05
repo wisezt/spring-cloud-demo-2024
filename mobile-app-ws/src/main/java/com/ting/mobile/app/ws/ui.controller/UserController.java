@@ -1,5 +1,11 @@
 package com.ting.mobile.app.ws.ui.controller;
 
+import com.ting.mobile.app.ws.ui.model.request.UserDetailsRequestModel;
+import com.ting.mobile.app.ws.ui.model.response.UserRest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,14 +28,40 @@ public class UserController {
     }
 
 
-    @GetMapping(path = "/{userId}")
-    public String getUser(@PathVariable String userId) {
-        return "get user was called. userId = " + userId;
+    @GetMapping(path = "/{userId}",
+            produces = {
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_JSON_VALUE
+            })
+    public ResponseEntity<UserRest> getUser(@PathVariable String userId) {
+
+        UserRest returnValue = new UserRest();
+        returnValue.setEmail("test@test.com");
+        returnValue.setFirstName("Ting");
+        returnValue.setLastName("Zheng");
+        return new ResponseEntity<UserRest>(returnValue, HttpStatus.OK);
+
+//        return new ResponseEntity<UserRest>(HttpStatus.BAD_REQUEST);
     }
 
-    @PostMapping
-    public String createUser() {
-        return "create user was called";
+    @PostMapping(
+            consumes = {
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_JSON_VALUE
+            },
+            produces = {
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_JSON_VALUE
+            }
+    )
+    public ResponseEntity<UserRest> createUser(
+            @RequestBody UserDetailsRequestModel userDetails
+    ) {
+        UserRest returnValue = new UserRest();
+        returnValue.setEmail(userDetails.getEmail());
+        returnValue.setFirstName(userDetails.getFirstName());
+        returnValue.setLastName(userDetails.getLastName());
+        return new ResponseEntity<UserRest>(returnValue, HttpStatus.OK);
     }
 
     @PutMapping
