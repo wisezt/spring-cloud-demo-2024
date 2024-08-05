@@ -1,15 +1,24 @@
 package com.ting.mobile.app.ws.ui.model.request;
 
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 public class UserDetailsRequestModel {
 
+    @NotNull(message = "First name cannot be null")
     private String firstName;
 
+    @NotNull(message = "Last name cannot be null")
     private String lastName;
 
+    @NotNull(message = "Email name cannot be null")
+    @Email(message = "Please put a valid email")
     private String email;
 
+    @NotNull(message = "First name cannot be null")
+    @Size(min = 8, max = 16, message = "Password must be >= 8 and <=16 characters")
     private String password;
 
     public String getFirstName() {

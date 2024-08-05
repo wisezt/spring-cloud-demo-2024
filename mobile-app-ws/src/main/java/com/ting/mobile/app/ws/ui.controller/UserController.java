@@ -2,6 +2,7 @@ package com.ting.mobile.app.ws.ui.controller;
 
 import com.ting.mobile.app.ws.ui.model.request.UserDetailsRequestModel;
 import com.ting.mobile.app.ws.ui.model.response.UserRest;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -55,7 +56,7 @@ public class UserController {
             }
     )
     public ResponseEntity<UserRest> createUser(
-            @RequestBody UserDetailsRequestModel userDetails
+           @Valid @RequestBody UserDetailsRequestModel userDetails
     ) {
         UserRest returnValue = new UserRest();
         returnValue.setEmail(userDetails.getEmail());
