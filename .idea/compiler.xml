@@ -6,9 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="eureka-server-demo" />
         <module name="Api-Gateway" />
         <module name="mobile-app-ws" />
         <module name="PhotoAppDiscoveryService" />
+        <module name="eureka-client-demo" />
         <module name="PhotoAppApiUsers" />
       </profile>
     </annotationProcessing>
@@ -18,6 +20,8 @@
       <module name="Api-Gateway" options="-parameters" />
       <module name="PhotoAppApiUsers" options="-parameters" />
       <module name="PhotoAppDiscoveryService" options="-parameters" />
+      <module name="eureka-client-demo" options="-parameters" />
+      <module name="eureka-server-demo" options="-parameters" />
       <module name="mobile-app-ws" options="-parameters" />
     </option>
   </component>
