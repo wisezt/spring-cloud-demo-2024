@@ -12,6 +12,8 @@
         <option value="$PROJECT_DIR$/eureka-client-demo/pom.xml" />
         <option value="$PROJECT_DIR$/PhotoAppApiAccountManagement/pom.xml" />
         <option value="$PROJECT_DIR$/PhotoAppApiUsers/pom.xml" />
+        <option value="$PROJECT_DIR$/PhotoAppApiGateway/pom.xml" />
+        <option value="$PROJECT_DIR$/PhotoAppApiEurekaServer/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

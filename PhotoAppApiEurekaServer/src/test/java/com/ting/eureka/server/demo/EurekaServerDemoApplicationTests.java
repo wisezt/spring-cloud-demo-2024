@@ -1,10 +1,10 @@
-package com.ting.apigateway;
+package com.ting.eureka.server.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApiGatewayApplicationTests {
+class EurekaServerDemoApplicationTests {
 
 	@Test
 	void contextLoads() {
