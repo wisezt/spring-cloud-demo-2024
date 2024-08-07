@@ -6,19 +6,25 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="PhotoAppApiAccountManagement" />
         <module name="eureka-server-demo" />
+        <module name="eureka-client-demo" />
         <module name="Api-Gateway" />
         <module name="mobile-app-ws" />
         <module name="PhotoAppDiscoveryService" />
-        <module name="eureka-client-demo" />
         <module name="PhotoAppApiUsers" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="PhotoAppApiUsers (1)" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Api-Gateway" options="-parameters" />
+      <module name="PhotoAppApiAccountManagement" options="-parameters" />
       <module name="PhotoAppApiUsers" options="-parameters" />
+      <module name="PhotoAppApiUsers (1)" options="-parameters" />
       <module name="PhotoAppDiscoveryService" options="-parameters" />
       <module name="eureka-client-demo" options="-parameters" />
       <module name="eureka-server-demo" options="-parameters" />

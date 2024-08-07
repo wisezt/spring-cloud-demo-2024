@@ -10,7 +10,14 @@
         <option value="$PROJECT_DIR$/mobile-app-ws/pom.xml" />
         <option value="$PROJECT_DIR$/eureka-server-demo/pom.xml" />
         <option value="$PROJECT_DIR$/eureka-client-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/PhotoAppApiAccountManagement/pom.xml" />
+        <option value="$PROJECT_DIR$/PhotoAppApiUsers/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/PhotoAppApiUsers/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="corretto-17" project-jdk-type="JavaSDK">
