@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ting</groupId>
-	<artifactId>PhotoAppApiAccountManagement</artifactId>
+	<artifactId>PhotoApp-Api-AccountManagement</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>PhotoAppApiAccountManagement</name>
 	<description>Eureka Client - Account Management</description>

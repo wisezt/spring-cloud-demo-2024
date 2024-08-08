@@ -6,34 +6,38 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="eureka-server-demo (1)" />
-        <module name="PhotoAppApiAccountManagement" />
+        <module name="PhotoApp-Api-EurekaServer" />
         <module name="eureka-server-demo" />
+        <module name="PhotoAppApiUsers-Demo-2024" />
+        <module name="PhotoApp-Api-Users" />
         <module name="eureka-client-demo" />
-        <module name="PhotoAppApiGateway" />
+        <module name="PhotoApp-Api-Gateway" />
+        <module name="PhotoApp-Api-AccountManagement" />
         <module name="Api-Gateway" />
         <module name="mobile-app-ws" />
         <module name="PhotoAppDiscoveryService" />
-        <module name="PhotoAppApiUsers" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Api-Gateway (1)" target="17" />
       <module name="PhotoAppApiUsers (1)" target="17" />
+      <module name="PhotoAppApiUsers-demo-2024" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Api-Gateway" options="-parameters" />
       <module name="Api-Gateway (1)" options="-parameters" />
-      <module name="PhotoAppApiAccountManagement" options="-parameters" />
-      <module name="PhotoAppApiGateway" options="-parameters" />
-      <module name="PhotoAppApiUsers" options="-parameters" />
+      <module name="PhotoApp-Api-AccountManagement" options="-parameters" />
+      <module name="PhotoApp-Api-EurekaServer" options="-parameters" />
+      <module name="PhotoApp-Api-Gateway" options="-parameters" />
+      <module name="PhotoApp-Api-Users" options="-parameters" />
       <module name="PhotoAppApiUsers (1)" options="-parameters" />
+      <module name="PhotoAppApiUsers-Demo-2024" options="-parameters" />
+      <module name="PhotoAppApiUsers-demo-2024" options="-parameters" />
       <module name="PhotoAppDiscoveryService" options="-parameters" />
       <module name="eureka-client-demo" options="-parameters" />
       <module name="eureka-server-demo" options="-parameters" />
-      <module name="eureka-server-demo (1)" options="-parameters" />
       <module name="mobile-app-ws" options="-parameters" />
     </option>
   </component>

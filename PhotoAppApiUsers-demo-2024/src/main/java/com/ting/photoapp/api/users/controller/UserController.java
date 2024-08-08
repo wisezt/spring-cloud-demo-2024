@@ -23,11 +23,21 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
     @GetMapping
-    public String getStatus(HttpServletRequest request) {
+    public String getUsers(HttpServletRequest request) {
         System.out.println("This is the /users in USERS-WS.IP: " + request.getRemoteAddr() + " PORT: " + request.getServerPort());
 
         return "This is the /users in USERS-WS.IP: " + request.getRemoteAddr() + " PORT: " + request.getServerPort();
+    }
+
+
+
+    @GetMapping("/status")
+    public String getStatus(HttpServletRequest request) {
+        System.out.println("This is the /users/status in USERS-WS.IP: " + request.getRemoteAddr() + " PORT: " + request.getServerPort());
+
+        return "This is the /users/status in USERS-WS.IP: " + request.getRemoteAddr() + " PORT: " + request.getServerPort();
     }
 
     @PostMapping("/login")
