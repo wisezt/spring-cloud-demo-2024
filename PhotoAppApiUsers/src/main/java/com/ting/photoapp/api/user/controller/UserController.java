@@ -2,6 +2,7 @@ package com.ting.photoapp.api.user.controller;
 
 import com.ting.photoapp.api.user.ui.model.CreateUserRequestModel;
 import com.ting.photoapp.api.user.ui.model.CreateUserResponseModel;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -22,7 +23,7 @@ public class UserController {
     }
 
     @PostMapping
-    public CreateUserResponseModel createUser(@RequestBody CreateUserRequestModel requestModel){
+    public CreateUserResponseModel createUser(@Valid @RequestBody CreateUserRequestModel requestModel){
 
         CreateUserResponseModel responseModel = new CreateUserResponseModel();
         responseModel.setUserId(UUID.randomUUID().toString());
