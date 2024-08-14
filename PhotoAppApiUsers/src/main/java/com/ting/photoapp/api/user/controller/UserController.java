@@ -1,9 +1,10 @@
 package com.ting.photoapp.api.user.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.ting.photoapp.api.user.ui.model.CreateUserRequestModel;
+import com.ting.photoapp.api.user.ui.model.CreateUserResponseModel;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/users")
@@ -21,8 +22,15 @@ public class UserController {
     }
 
     @PostMapping
-    public String createUser(){
-        return "User Created";
+    public CreateUserResponseModel createUser(@RequestBody CreateUserRequestModel requestModel){
+
+        CreateUserResponseModel responseModel = new CreateUserResponseModel();
+        responseModel.setUserId(UUID.randomUUID().toString());
+        responseModel.setFirstName(requestModel.getFirstName());
+        responseModel.setLastName(requestModel.getLastName());
+        responseModel.setEmail(requestModel.getEmail());
+
+        return responseModel;
     }
 
 
