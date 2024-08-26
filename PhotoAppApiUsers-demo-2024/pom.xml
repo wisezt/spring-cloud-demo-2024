@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ting</groupId>
-    <artifactId>PhotoAppApiUsers-demo-2024</artifactId>
+    <artifactId>Users-demo-2024</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>PhotoAppApiUsers-demo-2024</name>
+    <name>Users-demo-2024</name>
     <description>Eureka Client</description>
     <properties>
         <java.version>17</java.version>

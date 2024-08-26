@@ -42,6 +42,7 @@ public class WebSecurity {
                         authorizeRequests
                                 .requestMatchers(HttpMethod.GET, "/users").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/users").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/tests/**").permitAll()
                                 .requestMatchers("/h2-console/**").permitAll()
                                 .anyRequest().authenticated()
                 )
