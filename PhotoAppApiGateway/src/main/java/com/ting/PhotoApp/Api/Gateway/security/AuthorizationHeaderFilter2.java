@@ -1,5 +1,6 @@
 package com.ting.PhotoApp.Api.Gateway.security;
 
+import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
@@ -12,15 +13,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 //import org.hibernate.cfg.Environment;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.security.Keys;
-import io.jsonwebtoken.JwtParser;
 
 import javax.crypto.SecretKey;
 import java.util.Base64;
+//import javax.xml.bind.DatatypeConverter;
 
 
 @Component
@@ -39,13 +36,18 @@ public class AuthorizationHeaderFilter2 extends AbstractGatewayFilterFactory<Aut
 
     @Override
     public GatewayFilter apply(Config config) {
+
+        System.out.println("GatewayFilter");
+
         return ((exchange, chain) -> {
             ServerHttpRequest request = exchange.getRequest();
             if (!request.getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
                 return onError(exchange, "No authorization hear", HttpStatus.UNAUTHORIZED);
             }
             String authorizationHeader = request.getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
-            String jwt = authorizationHeader.replace("Bears", "");
+            System.out.println("authorizationHeader: " + authorizationHeader);
+            String jwt = authorizationHeader.replace("Bear ", "");
+            System.out.println("jwt: " + jwt);
 
             try {
                 if (!isJwtValid(jwt)) {
@@ -66,27 +68,28 @@ public class AuthorizationHeaderFilter2 extends AbstractGatewayFilterFactory<Aut
     }
 
     private boolean isJwtValid(String jwt) throws Exception {
-        String tokenSecret = env.getProperty("token.secret");
-
-        // Decode the secret key
-        byte[] secretKeyBytes = Base64.getDecoder().decode(tokenSecret);
-        SecretKey secretKey = Keys.hmacShaKeyFor(secretKeyBytes);
-
-        // Create a JwtParser with the secret key
-        JwtParser jwtParser = Jwts.parser()
-                .setSigningKey(secretKey)
-                .build();
+        String BASE64_SECRET = "wHf65tb0AYFh8Mc4IN6F/Tfr4Xn9d8sW6GZmZZ8TnW3yNfFA5/Xi6Hlc0GiHb3zhL5JbZZP6VPx1IMn5GbIXfQ==";
 
         try {
-            // Parse the JWT and validate its signature
-            Claims claims = jwtParser.parseClaimsJws(jwt).getBody();
-            System.out.println("JWT is valid. Claims: " + claims);
+            // Decode the Base64 secret key
+            byte[] secretKeyBytes = Base64.getDecoder().decode(BASE64_SECRET.getBytes());
+            SecretKey secretKey = Keys.hmacShaKeyFor(secretKeyBytes);
+            // Print the byte array
+            System.out.println("Signature Bytes: ");
+            for (byte b : secretKeyBytes) {
+                System.out.printf("%02x ", b);
+            }
+
+            // Parse the JWT
+            Jwts.parser()
+                    .setSigningKey(secretKey)
+                    .build()
+                    .parseClaimsJws(jwt);
+
             return true;
-        } catch (SignatureException e) {
-            System.out.println("Invalid JWT signature.");
-            return false;
-        } catch (Exception e) {
-            System.out.println("Invalid JWT token.");
+        } catch (JwtException | IllegalArgumentException e) {
+            // Log and handle the error
+            System.out.println("Invalid JWT token: " + e.getMessage());
             return false;
         }
     }

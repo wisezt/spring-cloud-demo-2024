@@ -10,7 +10,7 @@ public class TestController {
 
     @GetMapping
     public String getTests(){
-        return "This is /users from UERS-WS";
+        return "This is /tests at USERS-WS";
     }
 
     @GetMapping("/test01")

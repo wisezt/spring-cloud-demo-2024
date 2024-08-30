@@ -71,8 +71,13 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
         String userName = ((User) auth.getPrincipal()).getUsername();
         UserDTO userDetails = usersService.getUserDetailsByEmail(userName);
-        String tokenSecret = env.getProperty("token.secret");
-        byte[] secretKeyBytes = Base64.getEncoder().encode(tokenSecret.getBytes());
+        String tokenSecret = "wHf65tb0AYFh8Mc4IN6F/Tfr4Xn9d8sW6GZmZZ8TnW3yNfFA5/Xi6Hlc0GiHb3zhL5JbZZP6VPx1IMn5GbIXfQ==";
+        byte[] secretKeyBytes = Base64.getDecoder().decode(tokenSecret.getBytes());
+        // Print the byte array
+        System.out.println("Signature Bytes: ");
+        for (byte b : secretKeyBytes) {
+            System.out.printf("%02x ", b);
+        }
 
         SecretKey secretKey = Keys.hmacShaKeyFor(secretKeyBytes);
 
