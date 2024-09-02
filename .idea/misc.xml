@@ -14,6 +14,7 @@
         <option value="$PROJECT_DIR$/PhotoAppApiUsers/pom.xml" />
         <option value="$PROJECT_DIR$/PhotoAppApiGateway/pom.xml" />
         <option value="$PROJECT_DIR$/PhotoAppApiEurekaServer/pom.xml" />
+        <option value="$PROJECT_DIR$/PhotoAppApiServerConfig/pom.xml" />
       </list>
     </option>
   </component>
