@@ -29,8 +29,8 @@ public class UserController {
   public String getUsers() {
 
     System.out.println("test01:" + env.getProperty("test01"));
-
     System.out.println("test02:" + env.getProperty("test02"));
+    System.out.println("token.secret:" + env.getProperty("token.secret"));
 
 
     return "USRS\t" + env.getProperty("token.secret");

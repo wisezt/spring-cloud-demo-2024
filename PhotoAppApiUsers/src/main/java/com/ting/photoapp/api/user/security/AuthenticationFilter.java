@@ -31,10 +31,11 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 
-
+//@Component
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 //    @Autowired
@@ -73,7 +74,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         String userName = ((User) auth.getPrincipal()).getUsername();
         UserDTO userDetails = usersService.getUserDetailsByEmail(userName);
 //        String tokenSecret = "wHf65tb0AYFh8Mc4IN6F/Tfr4Xn9d8sW6GZmZZ8TnW3yNfFA5/Xi6Hlc0GiHb3zhL5JbZZP6VPx1IMn5GbIXfQ==";
-        Environment env = new StandardEnvironment();
+//        Environment env = new StandardEnvironment();
         String tokenSecret = env.getProperty("token.secret");
         System.out.println("token.secret: " + tokenSecret);
         byte[] secretKeyBytes = Base64.getDecoder().decode(tokenSecret.getBytes());
