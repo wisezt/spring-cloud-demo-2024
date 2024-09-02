@@ -8,6 +8,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.core.env.StandardEnvironment;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -71,7 +72,10 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
         String userName = ((User) auth.getPrincipal()).getUsername();
         UserDTO userDetails = usersService.getUserDetailsByEmail(userName);
-        String tokenSecret = "wHf65tb0AYFh8Mc4IN6F/Tfr4Xn9d8sW6GZmZZ8TnW3yNfFA5/Xi6Hlc0GiHb3zhL5JbZZP6VPx1IMn5GbIXfQ==";
+//        String tokenSecret = "wHf65tb0AYFh8Mc4IN6F/Tfr4Xn9d8sW6GZmZZ8TnW3yNfFA5/Xi6Hlc0GiHb3zhL5JbZZP6VPx1IMn5GbIXfQ==";
+        Environment env = new StandardEnvironment();
+        String tokenSecret = env.getProperty("token.secret");
+        System.out.println("token.secret: " + tokenSecret);
         byte[] secretKeyBytes = Base64.getDecoder().decode(tokenSecret.getBytes());
         // Print the byte array
         System.out.println("Signature Bytes: ");
