@@ -16,7 +16,15 @@ public class TestController {
 
     @GetMapping
     public String getTests(){
-        return "This is /tests at USERS-WS";
+
+        String test01 = env.getProperty("test01");
+        String test02 = env.getProperty("test02");
+        String result = String.format(
+                "This is /tests at USERS-WS\n\ttest01: %s\n\ttest02: %s", test01, test02
+        );
+
+
+        return result;
     }
 
     @GetMapping("/test01")
