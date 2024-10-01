@@ -19,8 +19,9 @@ public class TestController {
 
         String test01 = env.getProperty("test01");
         String test02 = env.getProperty("test02");
+        String test03 = env.getProperty("test03");
         String result = String.format(
-                "This is /tests at USERS-WS\n\ttest01: %s\n\ttest02: %s", test01, test02
+                "This is /tests at USERS-WS\n\ttest01: %s\n\ttest02: %s\n\ttest03: %s", test01, test02,test03
         );
 
 
